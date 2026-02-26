@@ -16,6 +16,7 @@ contract PropertyRegistry is AccessControl{
     }
     bytes32 public constant ADMIN_ROLE = keccak256("ADMIN_ROLE");
     bytes32 public constant OPERATOR_ROLE = keccak256("OPERATOR_ROLE");
+    bytes32 public constant TOKEN_MANAGER_ROLE = keccak256("TOKEN_MANAGER_ROLE");
     mapping (uint => Property) public property;
     uint public count ; 
 /*-----------Construcotr--------------*/
@@ -53,6 +54,14 @@ contract PropertyRegistry is AccessControl{
         require(_property.availiable == true, "PropertyRegistry: Property its unavailiable");
         _property.availiable = false;
         emit PropertyCanceled(_tokenId);
+    }
+    function updateFractionsSold(uint _tokenId, uint _amount) external onlyRole(TOKEN_MANAGER_ROLE) {
+        Property storage _property = property[_tokenId];
+        require(_property.availiable == true, "PropertyRegistry: Property its unavailiable");
+        _property.fractionsSold += _amount;
+    }
+    function setTokenContract(address _tokenContract) external onlyRole(ADMIN_ROLE) {
+    _grantRole(TOKEN_MANAGER_ROLE, _tokenContract);
     }
 }
 
