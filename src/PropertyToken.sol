@@ -31,4 +31,7 @@ contract PropertyToken is ERC1155, Ownable{
         require(balance > 0, "PropertyToken: No funds to commit");
         require(token.transfer(msg.sender, balance),"PropertyToken: Transfer failed");
     }
+    function getPropertyInfo(uint _tokenId) public view returns (PropertyRegistry.Property memory) {
+        return datapropertyRegistry.getProperty(_tokenId);
+    }
 }
