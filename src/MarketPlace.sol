@@ -10,7 +10,7 @@ import "./PropertyToken.sol";
  * @notice Secondary market for trading fractional property tokens between users
  * @dev Sellers must call PropertyToken.setApprovalForAll(marketplace, true) before listing
  */
-contract Marketplace is Ownable {
+contract MarketPlace is Ownable {
     // ═══════════════════ EVENTS ═══════════════════
     event ListingCreated(uint indexed listingId, address indexed seller, uint tokenId, uint amount, uint pricePerFraction);
     event ListingCanceled(uint indexed listingId);
