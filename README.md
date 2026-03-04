@@ -206,4 +206,25 @@ MIT
 
 ---
 
+
+## Testing
+
+40 tests covering unit, fuzz, and invariant testing with **99.25% line coverage**.
+
+| Contract         | Lines    | Statements | Branches | Functions |
+|------------------|----------|------------|----------|-----------|
+| PropertyRegistry | 100.00%  | 100.00%    | 90.00%   | 100.00%   |
+| PropertyToken    | 100.00%  | 100.00%    | 80.00%   | 100.00%   |
+| RentDistributor  | 100.00%  | 100.00%    | 87.50%   | 100.00%   |
+| Marketplace      | 96.30%   | 95.83%     | 84.21%   | 100.00%   |
+```bash
+forge test        # Run all tests
+forge coverage    # Generate coverage report
+```
+
+### Test Types
+- **Unit tests (37)** — Happy paths, reverts, access control
+- **Fuzz tests (2)** — Randomized inputs for rent distribution
+- **Invariant tests (1)** — 128K random calls verifying rent claims never exceed deposits
+
 **Built by [Sebastián Duarte](https://github.com/Sebasduarte14)** — Blockchain Developer | Civil Engineer | Medellín, Colombia
